@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Copy of Spotify.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Spotify.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>6A58999D2B9F23A90004E3E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A5899B32B9F23AA0004E3E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6A5899BD2B9F23AA0004E3E9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
