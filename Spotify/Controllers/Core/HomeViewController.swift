@@ -138,7 +138,7 @@ class HomeViewController: UIViewController {
                                                          bottom: 2,
                                                          trailing: 2)
             // Vertical group in horizontal group
-            let group = NSCollectionLayoutGroup.horizontal(
+            let group = NSCollectionLayoutGroup.vertical(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1),
                     heightDimension: .absolute(80)),
