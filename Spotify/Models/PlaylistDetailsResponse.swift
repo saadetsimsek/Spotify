@@ -14,7 +14,6 @@ struct PlaylistDetailsResponse: Codable {
     let images: [APIImage]
     let name: String
     let tracks: PlaylistTracksResponse
-    
 }
 
 struct PlaylistTracksResponse: Codable {
