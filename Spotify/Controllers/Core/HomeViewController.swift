@@ -384,7 +384,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             navigationController?.pushViewController(vc, animated: true)
         case .recommendedTracks: // bunu ayrı ayrı her sayfa için gerçekleştirmelisin bu sadece home sayfasındaki songs için search için gerçekleştirmez
             let track = tracks[indexPath.row]
-            PlaybackPresenter.startPlayback(from: self, track: track)
+            PlaybackPresenter.shared.startPlayback(from: self, track: track)
             break
         }
     }
