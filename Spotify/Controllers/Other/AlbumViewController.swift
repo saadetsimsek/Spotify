@@ -136,14 +136,21 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
       }
 
       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-          let track = tracks[indexPath.row]
+          var track = tracks[indexPath.row] // albumse tıkladığında resminde gelmesi için
+          track.album = self.album
           PlaybackPresenter.shared.startPlayback(from: self, track: track)
       }
   }
 extension AlbumViewController: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
     print("playing all")
-        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
+        //albume tıklandığında resmi göstermek için albumde resiminde var değişkeninde olması önemli!
+        let tracksWithAlbum: [AudioTrack] = tracks.compactMap({
+            var track = $0
+            track.album = self.album
+            return track
+        })
+        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracksWithAlbum)
     }
 }
 

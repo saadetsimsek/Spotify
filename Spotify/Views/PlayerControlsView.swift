@@ -16,8 +16,8 @@ protocol PlayerControlsViewDelegate: AnyObject {
 }
 
 struct PlayerControlsViewViewModel {
-    let title: String
-    let subtitle: String
+    let title: String?
+    let subtitle: String?
 }
 
 final class PlayerControlsView: UIView {
@@ -81,7 +81,7 @@ final class PlayerControlsView: UIView {
         addSubview(subtitleLabel)
         addSubview(volumeSlider)
         volumeSlider.addTarget(self, 
-                               action: #selector(didSlideSlider),
+                               action: #selector(didSlideSlider(_:)),
                                for: .valueChanged)
         addSubview(backButton)
         addSubview(nextButton)
@@ -117,8 +117,8 @@ final class PlayerControlsView: UIView {
         delegate?.playerControlsViewDidTapPlayPauseButton(self)
         
         //Update icon
-        let pause = UIImage(systemName: "pause", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34, weight: .regular))
         let play = UIImage(systemName: "play.fill", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34, weight: .regular))
+        let pause = UIImage(systemName: "pause", withConfiguration: UIImage.SymbolConfiguration(pointSize: 34, weight: .regular))
         playPauseButton.setImage(isPlaying ? pause : play, for: .normal)
     }
 

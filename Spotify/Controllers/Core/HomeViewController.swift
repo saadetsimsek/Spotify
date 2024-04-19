@@ -385,7 +385,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .recommendedTracks: // bunu ayrı ayrı her sayfa için gerçekleştirmelisin bu sadece home sayfasındaki songs için search için gerçekleştirmez
             let track = tracks[indexPath.row]
             PlaybackPresenter.shared.startPlayback(from: self, track: track)
-            break
         }
     }
     //sectionları başlıkla ayırmak için

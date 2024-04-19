@@ -18,11 +18,12 @@ protocol PlayerViewControllerDelegate: AnyObject {
 class PlayerViewController: UIViewController {
     
     weak var dataSource: PlayerDataSource?
+    
     weak var delegate: PlayerViewControllerDelegate?
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .systemBlue
+        //imageView.backgroundColor = .systemBlue
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -78,13 +79,15 @@ class PlayerViewController: UIViewController {
         // Actions
         
     }
+    
+    func refreshUI(){
+        print("refreshUI")
+        configure()
+    }
 }
 
 extension PlayerViewController: PlayerControlsViewDelegate {
-    func playerControlsView(_ playerControlsView: PlayerControlsView, didSlideSlider value: Float) {
-        delegate?.didSlideSlider(value)
-    }
-    
+ 
     func playerControlsViewDidTapPlayPauseButton(_ playerControlsView: PlayerControlsView) {
         delegate?.didTapPlayPause()
     }
@@ -95,6 +98,10 @@ extension PlayerViewController: PlayerControlsViewDelegate {
     
     func playerControlsViewDidTapBackwardsButton(_ playerControlsView: PlayerControlsView) {
         delegate?.didTapBackwards()
+    }
+    
+    func playerControlsView(_ playerControlsView: PlayerControlsView, didSlideSlider value: Float) {
+        delegate?.didSlideSlider(value)
     }
     
     
