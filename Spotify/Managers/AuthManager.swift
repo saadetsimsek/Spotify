@@ -87,7 +87,7 @@ final class AuthManager {
         }
         
         request.setValue("Basic \(base64String)",
-                          forHTTPHeaderField: "Authorization")
+                         forHTTPHeaderField: "Authorization")
         
         let task = URLSession.shared.dataTask(with: request) {[weak self] data, _, error in
             guard let data = data, error == nil else {
@@ -138,7 +138,7 @@ final class AuthManager {
         guard shouldRefreshToken else{
             completion?(true)
             return
-          }
+        }
         
         guard let refreshToken = self.refreshToken else{
             return
@@ -192,18 +192,25 @@ final class AuthManager {
         }
         task.resume()
     }
+    
+    private func cacheToken(result: AuthResponse){
+        UserDefaults.standard.setValue(result.access_token, forKey: "access_token")
         
-        private func cacheToken(result: AuthResponse){
-            UserDefaults.standard.setValue(result.access_token, forKey: "access_token")
-            
-            if let refreshToken = result.refresh_token {
-                UserDefaults.standard.setValue(result.refresh_token, forKey: "refresh_token")
-            }
-            UserDefaults.standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)), forKey: "expirationDate")
+        if let refreshToken = result.refresh_token {
+            UserDefaults.standard.setValue(result.refresh_token, forKey: "refresh_token")
         }
+        UserDefaults.standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)), forKey: "expirationDate")
+    }
+    
     public func signOut(completion: (Bool) -> Void){
+        print("okudu")
         
+        UserDefaults.standard.setValue(nil, forKey: "access_token")
+        UserDefaults.standard.setValue(nil, forKey: "refresh_token")
+        UserDefaults.standard.setValue(nil, forKey: "expirationDate")
+        
+        completion(true)
     }
-    }
+}
     
 
